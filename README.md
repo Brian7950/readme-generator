@@ -1,5 +1,5 @@
 
-# Title: readme Gen
+# Title: readme-generator
 
 ## Table of contents
 * [Description](#description)
@@ -12,13 +12,13 @@
 * [Email](#email)
 
 ### Description
-creates readme file
+Creates a README.md file 
 
 ### Installation
-no
+node.js to run application 
 
 ### Usage
-
+allows user to create readme from cli
 
 ### License
 MIT
@@ -29,11 +29,12 @@ MIT
 Brian    
 
 ### Tests
-TEST
+
 
 ### Github 
 Brian7950
+[Github Profile](https://github.com/Brian7950)
 
 ### Email
-brian@brian
+Brianh7950@gmail.com
     

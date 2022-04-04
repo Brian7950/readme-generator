@@ -6,8 +6,8 @@ const questions = [];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFileSync(fileName,data,(err) =>{
-        if(err){
+    fs.writeFileSync(fileName, data, (err) => {
+        if (err) {
             return err
         }
     })
@@ -18,55 +18,56 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt([
         {
-            type:"input",
-            message:"Enter Project Title?",
-            name:"projecttitle"
-      },
-      {
-        type:"input",
-        message:"Enter description:",
-        name:"description"
-  },
-{
-    type:"input",
-    message:"Installation requirments:",
-    name:"installationrequirments"
-},
-{
-    type:"input",
-    message:"Usage:",
-    name:"descriptionusage"
-},
-{
-    type:"list",
-    message:"License:",
-    choices:["MIT","ISC","APACHE 2.0","GPL","None"],
-    name:"license"
-},
-{
-    type:"input",
-    message:"Who's Contributing:",
-    name:"contributing"
-},
-{
-    type:"input",
-    message:"Tests:",
-    name:"tests"
-},
-{
-    type:"input",
-    message:"Github user name",
-    name:"github"
-},
-{
-    type:"input",
-    message:"Email",
-    name:"email"
-},
+            type: "input",
+            message: "Enter Project Title?",
+            name: "projecttitle"
+        },
+        {
+            type: "input",
+            message: "Enter description:",
+            name: "description"
+        },
+        {
+            type: "input",
+            message: "Installation requirments:",
+            name: "installationrequirments"
+        },
+        {
+            type: "input",
+            message: "Usage information:",
+            name: "usage"
+        },
+        {
+            type: "list",
+            message: "License:",
+            choices: ["MIT", "ISC", "APACHE 2.0", "GPL", "None"],
+            name: "license"
+        },
+        {
+            type: "input",
+            message: "Who's Contributing:",
+            name: "contributing"
+        },
+        {
+            type: "input",
+            message: "Tests:",
+            name: "tests"
+        },
+        {
+            type: "input",
+            message: "Github user name",
+            name: "github"
+        },
+        {
+            type: "input",
+            message: "Email",
+            name: "email"
+        },
+        //takes inquirer questions and puts them into reponse var
+    ]).then(response => {
 
-]).then(response =>{
-
-    let readMeContent = `
+        //takes obejects from inquirer places and displays them in markdown page depending on property name. 
+        let readMeContent = `
 # Title: ${response.projecttitle}
 
 ## Table of contents
@@ -86,7 +87,7 @@ ${response.description}
 ${response.installationrequirments}
 
 ### Usage
-${response.descriptionusage}
+${response.usage}
 
 ### License
 ${response.license}
@@ -101,15 +102,19 @@ ${response.tests}
 
 ### Github 
 ${response.github}
+[Github Profile](https://github.com/${response.github})
 
 ### Email
 ${response.email}
     `
-    console.log(readMeContent)
-    return readMeContent
-}).then(data => {
-    writeToFile("README.md", data)
-})
+        console.log(readMeContent)
+        return readMeContent
+        
+    })
+    //takes page created above and passes that info into data so we can save file into README.md
+    .then(data => {
+        writeToFile("README.md", data)
+    })
 }
 
 // Function call to initialize app
